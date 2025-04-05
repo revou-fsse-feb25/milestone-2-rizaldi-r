@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Number Guessing Game</h1>
+
+        <form id="input-range-form" action="">
+            <label for="input-range-min">Enter a range</label>
+            <input id="input-range-min" type="number" value="0" required />
+            -
+            <input id="input-range-max" type="number" value="100" required />
+            <input id="input-range-submit" type="submit" />
+        </form>
+
+        <form id="input-guess-form" action="" style="display: none">
+            <label for="input-guess">
+                Guess a number between
+                <span id="info-range"></span>:
+            </label>
+            <input id="input-guess" type="number" required />
+
+            <input id="input-guess-submit" type="submit" />
+        </form>
+
+        <p id="info-message"></p>
+        <button id="input-retry" type="button" style="display: none">
+            Retry
+        </button>
+
+        <script src="./app.js"></script>
+    </body>
+</html>
