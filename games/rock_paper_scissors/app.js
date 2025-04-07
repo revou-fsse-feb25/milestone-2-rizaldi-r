@@ -3,6 +3,10 @@ let infoComputerChoice = document.querySelector("#info-computer-choice");
 let infoPlayerChoice = document.querySelector("#info-player-choice");
 let infoMessage = document.querySelector("#info-message");
 
+// TODO:
+//     - 3 win is the winner
+//     - keep track of scores
+
 const choices = ["rock", "paper", "scissors"];
 
 for (let i = 0; i < inputChoices.length; i++) {
@@ -13,7 +17,6 @@ for (let i = 0; i < inputChoices.length; i++) {
 function onChoiceButtonPressed(e) {
     let playerChoice = e.target.value;
     let computerChoice = chooseRandomChoices();
-    console.log(" :23 ~ onChoiceButtonPressed ~ playerChoice:", playerChoice);
     determineWinner(playerChoice, computerChoice);
 }
 

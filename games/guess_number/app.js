@@ -68,13 +68,11 @@ function validateRange(rangeMin, rangeMax) {
             infoMessage
         );
         return false;
-    }
-    return true;
+    } else return true;
 }
 
 function validateGuess(playerGuess, rangeMin, rangeMax) {
     let isGuessValid = playerGuess >= rangeMin && playerGuess <= rangeMax;
-
     if (!isGuessValid) {
         addMessage(
             `Please enter a number between ${rangeMin}-${rangeMax}`,
@@ -94,7 +92,6 @@ function toggleDisplay(isShown = true, htmlElement) {
 
 function checkGuess(secretNumber, playerGuess, attemptsLeft = 5) {
     let message;
-
     // TODO: change into switch
     if (playerGuess === secretNumber) {
         message = "You guess the right number! want to play again?";
