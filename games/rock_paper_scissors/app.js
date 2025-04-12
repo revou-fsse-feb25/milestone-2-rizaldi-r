@@ -16,7 +16,7 @@ for (let i = 0; i < inputChoices.length; i++) {
 
 function onChoiceButtonPressed(e) {
     let playerChoice = e.target.value;
-    let computerChoice = chooseRandomChoices();
+    let computerChoice = generateRandomChoices();
     determineWinner(playerChoice, computerChoice);
 }
 
