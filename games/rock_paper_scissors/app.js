@@ -28,7 +28,7 @@ function generateRandomNumber(rangeMin, rangeMax) {
     return Math.floor(Math.random() * rangeMax) + rangeMin;
 }
 
-function chooseRandomChoices() {
+function generateRandomChoices() {
     let randomNumber = generateRandomNumber(0, choices.length);
     return choices[randomNumber];
 }
