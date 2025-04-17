@@ -1,0 +1,81 @@
+@import "./components/default.css";
+@import "./components/utility.css";
+/* @import "./components/navbar.css"; */
+/* @import "./components/footer.css"; */
+
+.game-sect {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-sect-title {
+    font-size: var(--font-size-title-sub);
+    line-height: var(--line-height-title-sub);
+    text-align: center;
+    width: 100%;
+    padding: 0.8rem 0rem;
+    transform: rotate(0);
+    border-radius: 4px;
+    background: linear-gradient(#c7c966fe, #f8fca55c);
+    filter: drop-shadow(0px -2px 4px #00000042)
+        drop-shadow(0px 2px 12px #e9eeba);
+    background-color: var(--color-main-bg);
+}
+
+.game-sect-title span {
+    opacity: 75%;
+}
+
+.game-sect-game {
+    background-color: #b6b5b5;
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 800px;
+    max-height: 600px;
+    margin: 2.4rem 0;
+}
+
+.game-sect-button {
+    font-size: var(--font-size-title-sub);
+    line-height: var(--line-height-title-sub);
+    width: fit-content;
+}
+.game-sect-button > a {
+    text-decoration: none;
+    color: var(--color-main-bg);
+}
+/* ---------- */
+
+.instruct {
+    margin: var(--margin-btwn-sect) 0;
+    border-radius: 4px;
+    background-color: var(--color-light);
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+}
+
+.instruct-title {
+    position: relative;
+    top: 1.2rem;
+    right: 0.4rem;
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+}
+
+.instruct-list {
+    padding: 2.6rem;
+}
+
+.instruct-list > li {
+    display: list-item;
+    margin-left: 2.6rem;
+    /* list-style-position: inside; */
+}
+
+/* above 480 */
+@media only screen and (min-width: 480px) {
+}
+
+/* above 768 */
+@media only screen and (min-width: 768px) {
+}
