@@ -1,0 +1,134 @@
+@import "./components/default.css";
+@import "./components/utility.css";
+/* @import "./components/navbar.css"; */
+/* @import "./components/footer.css"; */
+
+/* 🗃️SECT: Home Section */
+
+.home {
+    margin-top: 0;
+    margin: var(--margin-btwn-sect) 0;
+}
+
+.home-main {
+    display: flex;
+    border-radius: 8px;
+    background: linear-gradient(var(--color-light) 87%, #bebfbd);
+    filter: drop-shadow(0px 12px 20px var(--color-shadow));
+    padding: 2.8rem;
+    padding-bottom: 4.8rem;
+}
+
+.home-star {
+    margin-top: 0.6rem;
+}
+
+.home-text {
+    margin: 0 2.8rem;
+}
+
+.home-text-desc {
+    margin: 1.2rem 0;
+}
+
+.home-triangle {
+    display: block;
+    position: relative;
+    bottom: 0.8rem;
+    right: 6rem;
+    z-index: -1;
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+    margin-left: auto;
+}
+
+.home-duck {
+    display: block;
+    position: relative;
+    image-rendering: pixelated;
+    width: 10.5rem;
+    margin-left: auto;
+    opacity: 60%;
+    filter: drop-shadow(0px 4px 2px var(--color-shadow));
+}
+
+/* 🗃️SECT: Game Section */
+
+.games-title {
+    margin-bottom: 1.6rem;
+}
+
+.games-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.games-list > li {
+    background-color: var(--color-light);
+    border-radius: 4px;
+    filter: drop-shadow(0px 4px 4px var(--color-shadow));
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.games-list a {
+    text-decoration: none;
+}
+
+.game-img,
+.game-title,
+.game-desc {
+    width: 94%;
+    margin: 0 3%;
+}
+
+.game-img {
+    opacity: 85%;
+    border-radius: 2px;
+    margin: 3%;
+}
+
+.game-title {
+    font-weight: 100;
+    font-size: var(--font-size-reguler);
+}
+
+.game-desc {
+    font-size: 2.4rem;
+}
+
+/* above 480 */
+@media only screen and (min-width: 480px) {
+}
+
+/* above 768 */
+@media only screen and (min-width: 768px) {
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .home,
+    .games{
+        margin: 0;
+    }
+
+    .home {
+        width: 45%;
+        max-width: 30rem;
+    }
+
+    .games {
+        width: 60%;
+        max-width: 61.4rem;
+        margin-left: 5%;
+    }
+
+    .games-list {
+        justify-content: space-between;
+    }
+
+    .games-list li {
+        width: 48%;
+        max-width: 29.3rem;
+    }
+}

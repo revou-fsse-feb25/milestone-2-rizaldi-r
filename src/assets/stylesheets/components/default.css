@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+:root {
+    --font-family: "Jersey 10", sans-serif;
+    --font-size-root: 62.5%; /* (10px) for easier rem calculation*/
+    --font-size-reguler: 2rem; /* (16px) actual font size */
+    --font-size-title: 5.2rem;
+    --font-size-title-sub: 3rem;
+    --line-height-reguler: 2rem;
+    --line-height-title: 4.4rem;
+    --line-height-title-sub: 3.2rem;
+
+    --color-main: #323d39;
+    --color-main-bg: #c9ccbe;
+    --color-menu-bg: #d2ddc4;
+    --color-light: #e6e9e0;
+    --color-yellow: #d9dd8b;
+    --color-dim: #727574;
+    --color-shadow: #0000005d;
+    --color-btn-bg: #3a484f;
+
+    --margin-main: 2.8rem;
+    --margin-btwn-sect: 6.4rem;
+}
+
+/* --- remove default style --- */
+body,
+p,
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+li {
+    all: unset;
+    display: block;
+}
+
+/* --- apply new default style ---*/
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-family);
+    font-size: var(--font-size-root);
+    text-wrap: wrap;
+}
+
+body {
+    font-size: var(--font-size-reguler);
+    color: var(--color-main);
+    background: var(--color-main-bg);
+    line-height: var(--line-height-reguler);
+    margin: 0 var(--margin-main);
+}
+
+a {
+    color: var(--color-main);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    font-size: var(--font-size);
+    color: var(--color-main);
+    background-color: var(--color-secondary-bg);
+    border: var(--border);
+    padding: 1rem;
+}
+
+::placeholder {
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+    color: var(--color-main);
+    opacity: 0.5;
+}
+
+/* above 480 */
+@media only screen and (min-width: 480px) {
+}
+
+/* above 768 */
+@media only screen and (min-width: 768px) {
+    body {
+        width: 85%;
+        max-width: 97.5rem;
+        margin: auto;
+    }
+}
