@@ -1,61 +1,57 @@
 import homePage from "../pages/home_page.js";
 import gamePage from "../pages/game_page.js";
-
-const root: Element = document.querySelector("#root")!;
+import { gameDataList } from "../games/gameData.js";
 
 let gamePageAnchors: NodeListOf<Element>;
 let homePageAnchors: NodeListOf<Element>;
 
-const replaceElement = (elementString: string): void => {
-    if (root) {
-        root.textContent = "";
-        root.insertAdjacentHTML("beforeend", elementString);
-    }
+const root = document.querySelector("#root")!;
+
+const renderPage = (elementString: string): void => {
+    root.innerHTML = elementString;
 };
 
-const onHomePageAnchorsClicked = (event: Event) => {
-    removeListener();
-    replaceElement(homePage());
-    setupPageNavigation();
+// TODO: object type
+const setPage = (page: (dataObj?: object) => string, dataObj?: object) => {
+    return () => {
+        // console.log(dataObj);
+        removeListeners();
+        renderPage(page(dataObj));
+        setPageNavigation();
+    };
 };
 
-const onGamePageAnchorsClicked = (event: Event) => {
-    removeListener();
-    replaceElement(gamePage());
-    setupPageNavigation();
+const onChangeHomePage = setPage(homePage);
+const onChangeGamePage = (event: Event) => {
+  const gameTitle = (event.currentTarget as HTMLElement).getAttribute("data-game")!;
+  const gameData = gameDataList.find(data => gameTitle === data.gameTitle);
+  if (gameData) setPage(gamePage, gameData)();
 };
 
-const addListener = () => {
-    for (let i = 0; i < homePageAnchors.length; i++) {
-        homePageAnchors[i].addEventListener("click", onHomePageAnchorsClicked);
-    }
-    for (let i = 0; i < gamePageAnchors.length; i++) {
-        gamePageAnchors[i].addEventListener("click", onGamePageAnchorsClicked);
-    }
+const addListeners = (): void => {
+    gamePageAnchors.forEach((anchor) =>
+        anchor.addEventListener("click", onChangeGamePage)
+    );
+    homePageAnchors.forEach((anchor) =>
+        anchor.addEventListener("click", onChangeHomePage)
+    );
 };
 
-const removeListener = (): void => {
-    for (let i = 0; i < homePageAnchors.length; i++) {
-        homePageAnchors[i].removeEventListener(
-            "click",
-            onHomePageAnchorsClicked
-        );
-    }
-    for (let i = 0; i < gamePageAnchors.length; i++) {
-        gamePageAnchors[i].removeEventListener(
-            "click",
-            onGamePageAnchorsClicked
-        );
-    }
+const removeListeners = (): void => {
+    gamePageAnchors.forEach((anchor) =>
+        anchor.removeEventListener("click", onChangeGamePage)
+    );
+    homePageAnchors.forEach((anchor) =>
+        anchor.removeEventListener("click", onChangeHomePage)
+    );
 };
 
-const setupPageNavigation = (): void => {
-    gamePageAnchors = document.querySelectorAll(".game-page-anchor");
+const setPageNavigation = (): void => {
+    gamePageAnchors = document.querySelectorAll("[data-game]");
     homePageAnchors = document.querySelectorAll(".home-page-anchor");
-    addListener();
-    // console.log(gamePageAnchors, homePageAnchors);
+    addListeners();
 };
 
-replaceElement(homePage());
+renderPage(homePage());
 
-export default setupPageNavigation;
+export default setPageNavigation;

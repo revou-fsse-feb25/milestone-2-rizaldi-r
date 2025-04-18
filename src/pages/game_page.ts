@@ -1,4 +1,4 @@
-const gamePage = (dataObj) => {
+const gamePage = (dataObj: any) => {
     return /*HTML*/ `<section id="game-sect" class="game-sect">
         <!-- TODO: dynamic naming -->
         <h2 id="game-sect-title" class="game-sect-title">
@@ -19,4 +19,5 @@ const gamePage = (dataObj) => {
         </ul>
     </section>`;
 };
+
 export default gamePage;
