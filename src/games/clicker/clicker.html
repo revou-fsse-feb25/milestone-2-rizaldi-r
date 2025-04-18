@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body style="width: 800px; padding: 3rem; box-sizing: border-box">
+        <h1>Clicker Game</h1>
+        <button id="button-clicker">Click me</button>
+        <button id="button-retry" style="display: none">Retry</button>
+        <p>Scores: <span id="info-score">0</span></p>
+        <p>Timer: <span id="info-timer"></span></p>
+
+        <hr>
+
+        <form id="form-highscore" action="" style="display: none;">
+            <p>High Score!</p>
+            <label for="input-highscore-name"> Name </label>
+            <input id="input-highscore-name" type="text" required />
+
+            <input id="input-highscore-submit" type="submit" value="Add"/>
+        </form>
+
+        <h3>HighScore</h3>
+        <ul id="display-highscore">
+        </ul>
+
+        <script type="module" src="./clicker.js"></script>
+    </body>
+</html>
