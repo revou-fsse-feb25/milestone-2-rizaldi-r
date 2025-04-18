@@ -1,6 +1,6 @@
-import homePage from "../pages/home_page.js";
-import gamePage from "../pages/game_page.js";
-import { gameDataList } from "../games/gameData.js";
+import homePage from "../pages/home-page.js";
+import gamePage from "../pages/game-page.js";
+import { gameDataList } from "../games/game-data.js";
 
 let gamePageAnchors: NodeListOf<Element>;
 let homePageAnchors: NodeListOf<Element>;

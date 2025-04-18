@@ -1,12 +1,13 @@
-import homePage from "../pages/home_page.js";
-import gamePage from "../pages/game_page.js";
-import { gameDataList } from "../games/gameData.js";
+import homePage from "../pages/home-page.js";
+import gamePage from "../pages/game-page.js";
+import { gameDataList } from "../games/game-data.js";
 let gamePageAnchors;
 let homePageAnchors;
 const root = document.querySelector("#root");
 const renderPage = (elementString) => {
     root.innerHTML = elementString;
 };
+// TODO: object type
 const setPage = (page, dataObj) => {
     return () => {
         // console.log(dataObj);
@@ -18,7 +19,7 @@ const setPage = (page, dataObj) => {
 const onChangeHomePage = setPage(homePage);
 const onChangeGamePage = (event) => {
     const gameTitle = event.currentTarget.getAttribute("data-game");
-    const gameData = gameDataList.find(data => gameTitle === data.gameTitle); // Use find
+    const gameData = gameDataList.find(data => gameTitle === data.gameTitle);
     if (gameData)
         setPage(gamePage, gameData)();
 };
