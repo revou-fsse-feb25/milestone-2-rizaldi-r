@@ -1,5 +1,5 @@
 const homePage = () => {
-    return /*html*/ `
+    return /*html*/`
         <div class="main-container">
             <section id="home" class="home">
                 <div class="home-main">
@@ -108,4 +108,5 @@ const homePage = () => {
         </div>
     `;
 };
+
 export default homePage;

@@ -9,7 +9,6 @@ const toggleState = {
     isSubMenuActive: false,
 };
 const addNavbarToggle = () => {
-    console.log(elementNavbarSubMenu);
     elementNavbarBurger.addEventListener("click", () => {
         toggleMenu(toggleState, "isMenuActive");
     });
@@ -23,11 +22,11 @@ const addNavbarToggle = () => {
     }
     for (let i = 0; i < elementNavbarTogglesList.length; i++) {
         elementNavbarTogglesList[i].addEventListener("click", () => {
-            console.log("test");
             toggleSubMenu(toggleState, "isSubMenuActive");
         });
     }
 };
+// TODO: make this one function that accept an arrray of element
 const toggleMenu = (toggleState, key) => {
     toggleState[key] = !toggleState[key];
     toggleDisplay(elementNavbarMenu, toggleState[key]);

@@ -23,8 +23,6 @@ const toggleState: ToggleState = {
 };
 
 const addNavbarToggle = (): void => {
-    console.log(elementNavbarSubMenu);
-
     elementNavbarBurger.addEventListener("click", (): void => {
         toggleMenu(toggleState, "isMenuActive");
     });
