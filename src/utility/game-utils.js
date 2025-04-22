@@ -5,11 +5,13 @@ function addMessage(message, htmlELement) {
 function generateRandomNumber(rangeMin, rangeMax) {
     return Math.floor(Math.random() * rangeMax) + rangeMin;
 }
-function toggleDisplay(htmlElement, isShown = true) {
+function toggleDisplay(htmlElement, isShown = true, customDisplay = "initial") {
     if (!isShown)
         htmlElement.style.display = "none";
-    else
+    else if (!customDisplay)
         htmlElement.style.display = "initial";
+    else
+        htmlElement.style.display = customDisplay;
 }
 function toggleDisable(htmlElement, isDisabled = true) {
     if (!isDisabled)

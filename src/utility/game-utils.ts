@@ -6,9 +6,14 @@ function generateRandomNumber(rangeMin: number, rangeMax: number): number {
     return Math.floor(Math.random() * rangeMax) + rangeMin;
 }
 
-function toggleDisplay(htmlElement: HTMLElement, isShown: boolean = true): void {
+function toggleDisplay(
+    htmlElement: HTMLElement,
+    isShown: boolean = true,
+    customDisplay: string = "initial"
+): void {
     if (!isShown) htmlElement.style.display = "none";
-    else htmlElement.style.display = "initial";
+    else if (!customDisplay) htmlElement.style.display = "initial";
+    else htmlElement.style.display = customDisplay;
 }
 
 function toggleDisable(

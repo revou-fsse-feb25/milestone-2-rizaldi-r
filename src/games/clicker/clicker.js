@@ -7,7 +7,7 @@ const elementFormHighscore = document.querySelector("#form-highscore");
 const elementHighscoreName = document.querySelector("#input-highscore-name");
 const elementDisplayHighscore = document.querySelector("#display-highscore");
 let scoreCount = 0;
-let timeLimit = 1;
+let timeLimit = 3;
 const highscoreObj = {
     list: [],
 };
@@ -60,7 +60,7 @@ const displayHighscore = () => {
 };
 const checkHighScore = (score) => {
     var _a;
-    console.log(highscoreObj);
+    // console.log(highscoreObj);
     let highscore = (_a = highscoreObj.list[0]) === null || _a === void 0 ? void 0 : _a.score;
     if (score <= highscore)
         return;

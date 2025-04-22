@@ -19,14 +19,16 @@ export const gameDataList: Array<GameDataList> = [
         gamePathFile: "./src/games/rock-paper/rock-paper.html",
         gameIstruction: `
         <li>The player chooses Rock, Paper, or Scissors.</li>
-        <li>The computer randomly selects one as well.</li>
-        <li>The game determines the winner based on classic rules.</li>`,
+        <li>The computer will also randomly choose one of these three options.</li>
+        <li>The game determines the winner based on classic rules.</li>
+        <li>Whoever get wins three rounds wins the entire game.</li>`,
     },
     {
         gameTitle: "Clicker",
         gamePathFile: "./src/games/clicker/clicker.html",
         gameIstruction: `
-        <li>Every time the player clicks it, the score increases.</li>
-        <li>After a certain time limit, the game ends and displays the final score.</li>`,
+        <li>Every time you click, your score increases.</li>
+        <li>Do your best to score as many points as possible before the time is up.</li>
+        <li>If you achieve a high score, you'll be prompted to enter your name. Your name and score will be displayed at the top of the high score list.`,
     },
 ];

@@ -23,27 +23,19 @@ const setPage = (page: (dataObj?: object) => string, dataObj?: object) => {
 
 const onChangeHomePage = setPage(homePage);
 const onChangeGamePage = (event: Event) => {
-  const gameTitle = (event.currentTarget as HTMLElement).getAttribute("data-game")!;
-  const gameData = gameDataList.find(data => gameTitle === data.gameTitle);
-  if (gameData) setPage(gamePage, gameData)();
+    const gameTitle = (event.currentTarget as HTMLElement).getAttribute("data-game")!;
+    const gameData = gameDataList.find((data) => gameTitle === data.gameTitle);
+    if (gameData) setPage(gamePage, gameData)();
 };
 
 const addListeners = (): void => {
-    gamePageAnchors.forEach((anchor) =>
-        anchor.addEventListener("click", onChangeGamePage)
-    );
-    homePageAnchors.forEach((anchor) =>
-        anchor.addEventListener("click", onChangeHomePage)
-    );
+    gamePageAnchors.forEach((anchor) => anchor.addEventListener("click", onChangeGamePage));
+    homePageAnchors.forEach((anchor) => anchor.addEventListener("click", onChangeHomePage));
 };
 
 const removeListeners = (): void => {
-    gamePageAnchors.forEach((anchor) =>
-        anchor.removeEventListener("click", onChangeGamePage)
-    );
-    homePageAnchors.forEach((anchor) =>
-        anchor.removeEventListener("click", onChangeHomePage)
-    );
+    gamePageAnchors.forEach((anchor) => anchor.removeEventListener("click", onChangeGamePage));
+    homePageAnchors.forEach((anchor) => anchor.removeEventListener("click", onChangeHomePage));
 };
 
 const setPageNavigation = (): void => {

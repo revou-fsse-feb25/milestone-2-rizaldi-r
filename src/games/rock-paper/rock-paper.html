@@ -4,20 +4,42 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="./rock-paper.css">
     </head>
-    <body style="width: 800px; padding: 3rem; box-sizing: border-box">
+    <body>
         <h1>Rock, Paper, Scissors</h1>
         <form id="form" action="">
             <label>Select a move: </label>
-            <input class="input-choices" type="button" value="rock" />
-            <input class="input-choices" type="button" value="paper" />
-            <input class="input-choices" type="button" value="scissors" />
+            <input class="input-choices" type="button" value="rock" data-choice="rock" />
+            <input class="input-choices" type="button" value="paper" data-choice="paper" />
+            <input class="input-choices" type="button" value="scissors" data-choice="scissors" />
         </form>
 
-        <p>You choose: <span id="info-player-choice"></span></p>
-        <p>Computer choose: <span id="info-computer-choice"></span></p>
-        <p id="info-message"></p>
+        <div class="info-round">
+            <p>You choose: <span id="info-player-choice"></span></p>
+            <p>Computer choose: <span id="info-computer-choice"></span></p>
+            <p id="info-message-round"></p>
+        </div>
 
+        <hr>
+
+        <div class="info-game">
+            <h3>Score:</h3>
+            <p>You: <span class="info-player-score"></span></p>
+            <p>Computer: <span class="info-computer-score"></span></p>
+        </div>
+        
+        <div id="info-game-over" class="info-game-over">
+            <div class="info-game-over-text">
+                <h3>Final Score</h3>
+                <p>You: <span class="info-player-score"></span></p>
+                <p>Computer: <span class="info-computer-score"></span></p>
+                <p id="info-message-game"></p>
+                <button id="input-retry" type="button" >Retry</button>
+            </div>
+            <div class="info-game-over-bg"></div>
+        </div>
+        <!-- style="display: none" -->
         <script type="module" src="./rock-paper.js"></script>
     </body>
 </html>

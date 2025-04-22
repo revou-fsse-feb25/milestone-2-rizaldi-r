@@ -19,7 +19,7 @@ const setPage = (page, dataObj) => {
 const onChangeHomePage = setPage(homePage);
 const onChangeGamePage = (event) => {
     const gameTitle = event.currentTarget.getAttribute("data-game");
-    const gameData = gameDataList.find(data => gameTitle === data.gameTitle);
+    const gameData = gameDataList.find((data) => gameTitle === data.gameTitle);
     if (gameData)
         setPage(gamePage, gameData)();
 };

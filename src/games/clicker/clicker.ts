@@ -10,14 +10,21 @@ const elementHighscoreName: HTMLInputElement = document.querySelector("#input-hi
 const elementDisplayHighscore: HTMLParagraphElement = document.querySelector("#display-highscore")!;
 
 let scoreCount: number = 0;
-let timeLimit: number = 1;
+let timeLimit: number = 3;
 
-const highscoreObj = {
+interface Score {
+    name: string;
+    score: number;
+}
+
+const highscoreObj: {
+    list: Score[]
+} = {
     list: [],
 };
 
 // TODO: add this to utility
-const setLocalStorage = function (key: string, obj) {
+const setLocalStorage = function (key: string, obj: object) {
     return localStorage.setItem(key, JSON.stringify(obj));
 };
 const getLocalStorage = function (key: string) {
@@ -48,7 +55,7 @@ function onRetry(): void {
 
 const onAddHighscore = (e: Event): void => {
     e.preventDefault();
-    let newScore = { name: elementHighscoreName.value, score: scoreCount };
+    let newScore: Score = { name: elementHighscoreName.value, score: scoreCount };
     highscoreObj.list = getHighscoreList();
     highscoreObj.list.unshift(newScore);
     setLocalStorage("highscore", highscoreObj);
@@ -61,7 +68,7 @@ const displayHighscore = () => {
     elementDisplayHighscore.textContent = "";
     getHighscoreList()
         .reverse()
-        .forEach((obj) => {
+        .forEach((obj: Score) => {
             elementDisplayHighscore.insertAdjacentHTML(
                 "afterbegin",
                 `<li>${obj.name} - ${obj.score}</li>`
@@ -70,7 +77,7 @@ const displayHighscore = () => {
 };
 
 const checkHighScore = (score: number): void => {
-    console.log(highscoreObj);
+    // console.log(highscoreObj);
     let highscore: number = highscoreObj.list[0]?.score;
     if (score <= highscore) return;
     toggleDisplay(elementFormHighscore);
