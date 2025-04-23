@@ -1,16 +1,10 @@
-const elementNavbarBurger: HTMLElement =
-    document.querySelector("#navbar-burger")!;
-const elementNavbarMenu: HTMLElement = 
-    document.querySelector("#navbar-menu-mobile")!;
-const elementNavbarBlur: HTMLElement = 
-    document.querySelector("#navbar-blur")!;
+let elementNavbarBurger: HTMLElement;
+let elementNavbarMenu: HTMLElement;
+let elementNavbarBlur: HTMLElement;
 
-const elementNavbarTogglesList: NodeListOf<Element> = 
-    document.querySelectorAll("#navbar-toggle-list")!;
-const elementNavbarLinks: NodeListOf<Element> =
-    document.querySelectorAll("#navbar-menu-mobile .navbar-menu-link")!;
-const elementNavbarSubMenu: NodeListOf<Element> =
-    document.querySelectorAll("#navbar-sub-menu")!;
+let elementsNavbarTogglesList: NodeListOf<Element>;
+let elementsNavbarLinks: NodeListOf<Element>;
+let elementsNavbarSubMenu: NodeListOf<Element>;
 
 interface ToggleState {
     isMenuActive: boolean;
@@ -23,6 +17,14 @@ const toggleState: ToggleState = {
 };
 
 const addNavbarToggle = (): void => {
+    elementNavbarBurger = document.querySelector("#navbar-burger")!;
+    elementNavbarMenu = document.querySelector("#navbar-menu-mobile")!;
+    elementNavbarBlur = document.querySelector("#navbar-blur")!;
+
+    elementsNavbarTogglesList = document.querySelectorAll("#navbar-toggle-list")!;
+    elementsNavbarLinks = document.querySelectorAll("#navbar-menu-mobile .navbar-menu-link")!;
+    elementsNavbarSubMenu = document.querySelectorAll("#navbar-sub-menu")!;
+
     elementNavbarBurger.addEventListener("click", (): void => {
         toggleMenu(toggleState, "isMenuActive");
     });
@@ -31,37 +33,34 @@ const addNavbarToggle = (): void => {
         toggleMenu(toggleState, "isMenuActive");
     });
 
-    for (let i = 0; i < elementNavbarLinks.length; i++) {
-        elementNavbarLinks[i].addEventListener("click", (): void => {
+    for (let i = 0; i < elementsNavbarLinks.length; i++) {
+        elementsNavbarLinks[i].addEventListener("click", (): void => {
             toggleMenu(toggleState, "isMenuActive");
         });
     }
 
-    for (let i = 0; i < elementNavbarTogglesList.length; i++) {
-        elementNavbarTogglesList[i].addEventListener("click", (): void => {
-            toggleSubMenu(toggleState, "isSubMenuActive")
+    for (let i = 0; i < elementsNavbarTogglesList.length; i++) {
+        elementsNavbarTogglesList[i].addEventListener("click", (): void => {
+            toggleSubMenu(toggleState, "isSubMenuActive");
         });
     }
 };
 
 // TODO: make this one function that accept an arrray of element
-const toggleMenu = (toggleState: ToggleState, key : keyof ToggleState): void => {
+const toggleMenu = (toggleState: ToggleState, key: keyof ToggleState): void => {
     toggleState[key] = !toggleState[key];
     toggleDisplay(elementNavbarMenu, toggleState[key]);
     toggleDisplay(elementNavbarBlur, toggleState[key]);
 };
 
-const toggleSubMenu = (toggleState: ToggleState, key : keyof ToggleState): void => {
+const toggleSubMenu = (toggleState: ToggleState, key: keyof ToggleState): void => {
     toggleState[key] = !toggleState[key];
-    for (const element of elementNavbarSubMenu) {
+    for (const element of elementsNavbarSubMenu) {
         toggleDisplay(element as HTMLElement, toggleState[key]);
     }
 };
 
-const toggleDisplay = (
-    htmlElement: HTMLElement,
-    isShown: boolean = true
-): void => {
+const toggleDisplay = (htmlElement: HTMLElement, isShown: boolean = true): void => {
     if (!isShown) htmlElement.style.display = "none";
     else htmlElement.style.display = "initial";
 };

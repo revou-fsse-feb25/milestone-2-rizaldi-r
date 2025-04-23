@@ -1,7 +1,9 @@
-import setPageNavigation from "./src/features/page-loader.js";
-import addNavbarToggle from "./src/features/navbar.js"; 
+import addNavbarToggle from "./src/features/navbar.js";
+import navbar from "./src/components/navbar/navbar.js";
+import homePage from "./src/pages/home-page.js"
 
-// const root: Element = document.querySelector("#root")!;
+const root: Element = document.querySelector("#root")!;
 
-setPageNavigation()
-addNavbarToggle()
+root.insertAdjacentHTML("beforebegin", navbar());
+root.innerHTML = homePage();
+addNavbarToggle();
