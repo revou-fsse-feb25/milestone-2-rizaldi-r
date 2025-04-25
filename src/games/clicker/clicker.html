@@ -4,28 +4,36 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="./clicker.css">
+        <link rel="stylesheet" href="./clicker.css" />
     </head>
     <body>
-        <h1>Clicker Game</h1>
-        <button id="button-clicker">Click me</button>
-        <button id="button-retry" style="display: none">Retry</button>
-        <p>Scores: <span id="info-score">0</span></p>
-        <p>Timer: <span id="info-timer"></span></p>
+        <div class="game-container">
+            <div class="game-buttons">
+                <button id="button-clicker" class="game-button-clicker btn btn-action">Click me</button>
+                <button id="button-retry" class="game-button-retry btn btn-action">Retry</button>
+            </div>
 
-        <hr>
+            <div class="game-score">
+                <p>Scores: <span id="info-score">0</span></p>
+                <p>Timer: <span id="info-timer"></span></p>
+            </div>
+        </div>
 
-        <form id="form-highscore" action="" style="display: none;">
-            <p>High Score!</p>
-            <label for="input-highscore-name"> Name </label>
-            <input id="input-highscore-name" type="text" required />
-
-            <input id="input-highscore-submit" type="submit" value="Add"/>
+        <form id="form-highscore" class="form-highscore" action="" style="display: none">
+            <p class="form-title">High Score!</p>
+            <label class="form-label" for="input-highscore-name"> Name </label>
+            <div class="form-input-container">
+                <input class="form-input" id="input-highscore-name" type="text" required />
+                <input class="form-submit btn" id="input-highscore-submit" type="submit" value="Enter" />
+            </div>
         </form>
 
-        <h3>HighScore</h3>
-        <ul id="display-highscore">
-        </ul>
+        <div class="list-highscore">
+            <p class="list-title title-sub">HighScore</p>
+            <ul class="list-scores" id="display-highscore">
+                
+            </ul>
+        </div>
 
         <script type="module" src="./clicker.js"></script>
     </body>

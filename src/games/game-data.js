@@ -26,15 +26,13 @@ export const gameDataList = [
         gameIstruction: `
         <li>Every time you click, your score increases.</li>
         <li>Do your best to score as many points as possible before the time is up.</li>
-        <li>If you achieve a high score, you'll be prompted to enter your name. Your name and score will be displayed at the top of the high score list.`,
+        <li>If you achieve a high score, you'll be prompted to enter your name. Your name and score will be displayed at the top of the high score list.</li>`,
     },
     {
-        gameTitle: "Clicker 2",
-        gameDescription: "under construction",
-        gamePathFile: "./src/games/clicker/clicker.html",
+        gameTitle: "PingPong",
+        gameDescription: "play pingpong with yourself",
+        gamePathFile: "./src/games/pingpong/pingpong.html",
         gameIstruction: `
-        <li>Every time you click, your score increases.</li>
-        <li>Do your best to score as many points as possible before the time is up.</li>
-        <li>If you achieve a high score, you'll be prompted to enter your name. Your name and score will be displayed at the top of the high score list.`,
+        <li></li>`,
     },
 ];

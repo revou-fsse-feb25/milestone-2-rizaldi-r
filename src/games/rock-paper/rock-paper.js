@@ -9,23 +9,24 @@ const elementInfoGame = document.querySelector("#info-message-game");
 const elementButtonRetry = document.querySelector("#input-retry");
 const elementInfoGameOver = document.querySelector("#info-game-over");
 const winningScore = 3;
-const choices = ["rock", "paper", "scissors"];
+const choices = ["🪨", "📃", "✂️"];
 const scores = {
     player: 0,
     computer: 0,
 };
 function updateScore(scoresObj, playerChoice, computerChoice) {
+    // pake switch case
     if (playerChoice === computerChoice)
         return "tie";
-    else if ((playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")) {
+    else if ((playerChoice === "🪨" && computerChoice === "✂️") ||
+        (playerChoice === "📃" && computerChoice === "🪨") ||
+        (playerChoice === "✂️" && computerChoice === "📃")) {
         scoresObj.player++;
-        return "player win";
+        return "Player win";
     }
     else {
         scoresObj.computer++;
-        return "computer win";
+        return "Computer win";
     }
 }
 function determineWinner(scoresObj, winningScore) {

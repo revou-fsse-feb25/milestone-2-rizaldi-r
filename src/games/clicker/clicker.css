@@ -1,3 +1,112 @@
-body {
-    margin: 4rem;
+@import "../../assets/stylesheets/components/default-game.css";
+@import "../../assets/stylesheets/components/utility.css";
+
+.btn {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+}
+
+.btn:disabled,
+.btn[disabled] {
+    cursor: default;
+    opacity: 40%;
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-light);
+    width: fit-content;
+    padding: 1.6rem;
+    margin: 0 auto;
+    margin-bottom: var(--margin-btwn-sect);
+    border-radius: 8px;
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+}
+
+.game-buttons {
+    display: flex;
+    flex-flow: column;
+}
+
+.game-button-clicker {
+    margin-bottom: 0.8rem;
+}
+
+.game-button-retry {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.game-score {
+    position: absolute;
+    background-color: var(--color-yellow);
+    right: -7rem;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    transform: rotate(5deg);
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+}
+
+.form-highscore {
+    background-color: var(--color-light);
+    border-radius: 8px;
+    width: fit-content;
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+    padding: 1.2rem;
+    margin-bottom: var(--margin-btwn-sect);
+}
+
+.form-title {
+    text-align: center;
+    font-size: var(--font-size-title-sub);
+    margin-bottom: 1.2rem;
+}
+
+.form-label {
+    display: block;
+}
+
+.form-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 8rem;
+}
+
+.form-submit {
+    display: inline-block;
+    margin-left: -0.8rem;
+}
+
+.list-highscore {
+    background-color: var(--color-light);
+    border-radius: 8px;
+    filter: drop-shadow(0px 2px 2px var(--color-shadow));
+    padding: 0 2rem;
+    padding-bottom: 2rem;
+    margin-top: calc(var(--margin-btwn-sect) * 2);
+}
+
+.list-title {
+    position: relative;
+    top: -1rem;
+    padding: 0.2rem 0.4em;
+    margin: 0 auto;
+}
+
+.list-scores {
+    list-style-type: none;
+    width: 12rem;
+    padding: 0;
+    margin: 1rem auto;
+}
+
+.list-scores li {
+    display: flex;
+    justify-content: space-between;
 }

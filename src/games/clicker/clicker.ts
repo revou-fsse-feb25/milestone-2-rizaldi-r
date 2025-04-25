@@ -9,6 +9,7 @@ const elementFormHighscore: HTMLFormElement = document.querySelector("#form-high
 const elementHighscoreName: HTMLInputElement = document.querySelector("#input-highscore-name")!;
 const elementDisplayHighscore: HTMLParagraphElement = document.querySelector("#display-highscore")!;
 
+let intervalUpdateTimerId: number | null = null;
 let scoreCount: number = 0;
 let timeLimit: number = 3;
 
@@ -18,7 +19,7 @@ interface Score {
 }
 
 const highscoreObj: {
-    list: Score[]
+    list: Score[];
 } = {
     list: [],
 };
@@ -38,6 +39,40 @@ const getHighscoreList = () => {
     return getLocalStorage("highscore").list;
 };
 
+const displayHighscore = () => {
+    elementDisplayHighscore.textContent = "";
+    getHighscoreList()
+        .reverse()
+        .forEach((obj: Score) => {
+            elementDisplayHighscore.insertAdjacentHTML(
+                "afterbegin",
+                `<li>
+                    <span>${obj.name}</span> 
+                    <span>${obj.score}</span>
+                </li>`
+            );
+        });
+};
+
+const checkHighScore = (score: number): void => {
+    let highscore: number = highscoreObj.list[0]?.score;
+    if (score <= highscore) return;
+    toggleDisplay(elementFormHighscore, true, "block");
+};
+
+function timer(timeLimit: number) {
+    intervalUpdateTimerId = window.setInterval(() => {
+        addMessage((--timeLimit).toString(), elementInfoTimer);
+        if (timeLimit <= 0) {
+            clearInterval(intervalUpdateTimerId!);
+            intervalUpdateTimerId = null;
+            checkHighScore(scoreCount);
+            toggleDisplay(elementButtonRetry);
+            toggleDisable(elementButtonClicker);
+        }
+    }, 1000);
+}
+
 function onClickerClicked() {
     if (scoreCount === 0) timer(timeLimit);
     scoreCount++;
@@ -46,8 +81,11 @@ function onClickerClicked() {
 
 function onRetry(): void {
     scoreCount = 0;
+    if (intervalUpdateTimerId) {
+        clearInterval(intervalUpdateTimerId);
+        intervalUpdateTimerId = null;
+    }
     toggleDisplay(elementFormHighscore, false);
-    toggleDisplay(elementButtonRetry, false);
     toggleDisable(elementButtonClicker, false);
     addMessage(scoreCount.toString(), elementInfoScore);
     addMessage(timeLimit.toString(), elementInfoTimer);
@@ -61,40 +99,7 @@ const onAddHighscore = (e: Event): void => {
     setLocalStorage("highscore", highscoreObj);
     displayHighscore();
     toggleDisplay(elementFormHighscore, false);
-    // console.log(getHighscoreList());
 };
-
-const displayHighscore = () => {
-    elementDisplayHighscore.textContent = "";
-    getHighscoreList()
-        .reverse()
-        .forEach((obj: Score) => {
-            elementDisplayHighscore.insertAdjacentHTML(
-                "afterbegin",
-                `<li>${obj.name} - ${obj.score}</li>`
-            );
-        });
-};
-
-const checkHighScore = (score: number): void => {
-    // console.log(highscoreObj);
-    let highscore: number = highscoreObj.list[0]?.score;
-    if (score <= highscore) return;
-    toggleDisplay(elementFormHighscore);
-};
-
-function timer(timeLimit: number) {
-    const intervalId: number = window.setInterval(() => {
-        addMessage((--timeLimit).toString(), elementInfoTimer);
-    }, 1000);
-
-    setTimeout(() => {
-        clearInterval(intervalId);
-        checkHighScore(scoreCount);
-        toggleDisplay(elementButtonRetry);
-        toggleDisable(elementButtonClicker);
-    }, timeLimit * 1000);
-}
 
 elementButtonClicker.addEventListener("click", onClickerClicked);
 elementButtonRetry.addEventListener("click", onRetry);

@@ -16,7 +16,7 @@ const elementButtonRetry: HTMLButtonElement = document.querySelector("#input-ret
 const elementInfoGameOver: HTMLElement = document.querySelector("#info-game-over")!;
 
 const winningScore = 3;
-const choices: string[] = ["rock", "paper", "scissors"];
+const choices: string[] = ["🪨", "📃", "✂️"];
 
 interface Scores {
     player: number;
@@ -28,17 +28,18 @@ const scores: Scores = {
 };
 
 function updateScore(scoresObj: Scores, playerChoice: string, computerChoice: string): string {
+    // pake switch case
     if (playerChoice === computerChoice) return "tie";
     else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
+        (playerChoice === "🪨" && computerChoice === "✂️") ||
+        (playerChoice === "📃" && computerChoice === "🪨") ||
+        (playerChoice === "✂️" && computerChoice === "📃")
     ) {
         scoresObj.player++;
-        return "player win";
+        return "Player win";
     } else {
         scoresObj.computer++;
-        return "computer win";
+        return "Computer win";
     }
 }
 

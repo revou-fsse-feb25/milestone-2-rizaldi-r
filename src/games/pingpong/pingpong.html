@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="clicker-2.css" />
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                padding: 7rem 0;
+                width: fit-content;
+                margin: auto;
+                text-align: center;
+            }
+            canvas {
+                margin: auto;
+                background: #eee;
+                display: block;
+            }
+            button {
+                display: inline;
+            }
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="480" height="320"></canvas>
+        <div class="container">
+            <span>score: <span id="score">0</span></span>
+            <button class="btn" id="runButton">Start game</button>
+        </div>
+        <script>
+            let score = 0;
+            const elementScore = document.getElementById("score");
+
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+
+            let interval = 0;
+            let rightPressed = false;
+            let leftPressed = false;
+
+            const ballRadius = 10;
+            let x = canvas.width / 2;
+            let y = canvas.height - 30;
+            let dx = 2;
+            let dy = -2;
+
+            const paddleHeight = 10;
+            const paddleWidth = 75;
+            let paddleX = (canvas.width - paddleWidth) / 2;
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = "red";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function drawPaddle() {
+                ctx.beginPath();
+                ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function keyDownHandler(e) {
+                if (e.key === "Right" || e.key === "ArrowRight") rightPressed = true;
+                else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = true;
+            }
+
+            function keyUpHandler(e) {
+                if (e.key === "Right" || e.key === "ArrowRight") rightPressed = false;
+                else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = false;
+                // console.log(" rightPressed", rightPressed)
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+                drawPaddle();
+                x += dx;
+                y += dy;
+                if (y + dy < ballRadius) dy = -dy;
+                else if (y + dy > canvas.height - ballRadius) {
+                    // ball hit the paddle
+                    if (x > paddleX && x < paddleX + paddleWidth) {
+                        score++;
+                        elementScore.textContent = score
+                        dx = dx * 1.1;
+                        dy = -dy * 1.1;
+                    // ball hit the ground
+                    } else {
+                        alert(`GAME OVER, final score: ${score}`);
+                        document.location.reload();
+                        clearInterval(interval);
+                    }
+                }
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) dx = -dx;
+
+                if (rightPressed) paddleX += 7;
+                else if (leftPressed) paddleX -= 7;
+            }
+
+            function startGame() {
+                interval = setInterval(draw, 10);
+            }
+            // startGame();
+
+            document.getElementById("runButton").addEventListener("click", function () {
+                startGame();
+                this.disabled = true;
+            });
+            document.addEventListener("keydown", keyDownHandler, false);
+            document.addEventListener("keyup", keyUpHandler, false);
+        </script>
+    </body>
+</html>

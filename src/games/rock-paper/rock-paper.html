@@ -4,38 +4,59 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="./rock-paper.css">
+        <link rel="stylesheet" href="./rock-paper.css" />
     </head>
     <body>
-        <h1>Rock, Paper, Scissors</h1>
-        <form id="form" action="">
-            <label>Select a move: </label>
-            <input class="input-choices" type="button" value="rock" data-choice="rock" />
-            <input class="input-choices" type="button" value="paper" data-choice="paper" />
-            <input class="input-choices" type="button" value="scissors" data-choice="scissors" />
+        <div class="decor-tape"></div>
+
+        <form class="form" id="form" action="">
+            <label class="form-desc">Select a move: </label>
+            <div class="form-btns">
+                <input class="input-choices emoji" type="button" value="🪨" data-choice="rock" />
+                <input class="input-choices emoji" type="button" value="📃" data-choice="paper" />
+                <input
+                    class="input-choices emoji"
+                    type="button"
+                    value="✂️"
+                    data-choice="scissors"
+                />
+            </div>
         </form>
 
         <div class="info-round">
-            <p>You choose: <span id="info-player-choice"></span></p>
-            <p>Computer choose: <span id="info-computer-choice"></span></p>
-            <p id="info-message-round"></p>
+            <div class="info-round-container">
+                <div class="info-round-player">
+                    <p>Player</p>
+                    <span class="emoji" id="info-player-choice">🪨</span>
+                </div>
+                <span class="info-round-vs">VS</span>
+                <div class="info-round-computer">
+                    <p>Computer</p>
+                    <span class="emoji" id="info-computer-choice">🪨</span>
+                </div>
+            </div>
+            <p class="info-round-message" id="info-message-round"></p>
         </div>
 
-        <hr>
-
-        <div class="info-game">
-            <h3>Score:</h3>
-            <p>You: <span class="info-player-score"></span></p>
-            <p>Computer: <span class="info-computer-score"></span></p>
+        <div class="info-score">
+            <h3 class="info-score-title">Score</h3>
+            <div>
+                <p>Player</p>
+                <span class="info-player-score">0</span>
+            </div>
+            <div>
+                <p>Computer</p>
+                <span class="info-computer-score">0</span>
+            </div>
         </div>
-        
+
         <div id="info-game-over" class="info-game-over">
             <div class="info-game-over-text">
-                <h3>Final Score</h3>
-                <p>You: <span class="info-player-score"></span></p>
-                <p>Computer: <span class="info-computer-score"></span></p>
-                <p id="info-message-game"></p>
-                <button id="input-retry" type="button" >Retry</button>
+                <h3 class="info-gameover-title">FINAL SCORE</h3>
+                <p>Player: <span class="info-player-score">0</span></p>
+                <p>Computer: <span class="info-computer-score">0</span></p>
+                <p class="info-message-game" id="info-message-game">computer vs player</p>
+                <button class="input-retry btn" id="input-retry" type="button">Replay</button>
             </div>
             <div class="info-game-over-bg"></div>
         </div>
